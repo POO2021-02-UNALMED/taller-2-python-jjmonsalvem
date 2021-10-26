@@ -28,8 +28,9 @@ class Auto:
     def verificarIntegridad(self):
         bandera = True
         for i in self.asientos:
-            if i != self.registro:
-                bandera = False
+            if isinstance(i, Asiento):
+                if i.registro != self.registro:
+                    bandera = False
 
         if (self.registro != self.motor.registro):
             bandera = False
@@ -52,8 +53,19 @@ class Motor:
         if (tipo == "electrico" or tipo == "gasolina"):
             self.tipo = tipo
 
+"""
+if __name__ == "__main__":
+    a1 = Auto("model 3", 33000, [Asiento("blanco", 5000, 32),None, None, Asiento("blanco", 5000, 32), None], "tesla", Motor(4, "electrico", 32), 32)
+    a2 = Auto("model 3", 33000, [Asiento("blanco", 5000, 40),None, None, Asiento("blanco", 5000, 32), None], "tesla", Motor(4, "electrico", 32), 32)
 
+    
 
+    if(a1.verificarIntegridad() == "Auto original" and a2.verificarIntegridad() == "Las piezas no son originales"):
+        print("paso")
+    else:
+        print("no paso")
+"""
+    
         
 
 
